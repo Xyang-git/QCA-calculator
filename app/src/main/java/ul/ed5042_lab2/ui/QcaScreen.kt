@@ -22,6 +22,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
@@ -108,14 +109,14 @@ fun QcaScreen(
     ) {
         Text(
             text = stringResource(R.string.qca_calculator),
-            style = MaterialTheme.typography.displaySmall
+            style = typography.displaySmall
         )
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
         ModuleCard(
             code = stringResource(R.string.code),
             grade = stringResource(R.string.grade),
             weight = stringResource(R.string.ects),
-            style = MaterialTheme.typography.bodyLarge,
+            style = typography.bodyLarge,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp))
@@ -165,13 +166,13 @@ fun QcaScreen(
             ) {
             Text(
                 text = stringResource(R.string.your_qca),
-                style = MaterialTheme.typography.displaySmall,
+                style = typography.displaySmall,
             )
             Spacer(modifier = Modifier.width(15.dp))
             Text(
                 modifier = modifier.testTag("Result"),
                 text = qca,
-                style = MaterialTheme.typography.displayMedium
+                style = typography.displayMedium
             )
             Spacer(modifier = Modifier.width(5.dp))
         }
@@ -185,17 +186,28 @@ fun ModuleList(moduleList: List<Module>, modifier: Modifier) {
 
     LazyColumn(modifier = modifier) {
 
+      items(moduleList)  { module->
+            ModuleCard(
+                code = module.code,
+                grade = module.grade,
+                weight = module.weight.toString(),
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp)
+            )
+        }
+
     }
 }
 
 
 fun filter(moduleList: List<Module>, minQPV: Float): List<Module> {
-    val filteredList = mutableListOf<Module>()
-    for (module in moduleList) {
-        if (lookupQpv(module.grade) >= minQPV) {
-            filteredList.add(module)
-        }
-    }
+
+     val filteredList= moduleList.filter{ module->
+             lookupQpv(module.grade) >= minQPV
+     }
+
     return filteredList
 }
 
@@ -212,7 +224,7 @@ fun ModuleCard(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 5.dp, bottom = 5.dp),
+                .padding(5.dp),
 
 //            horizontalArrangement = Arrangement.Center
         ) {
@@ -224,7 +236,7 @@ fun ModuleCard(
             Spacer(modifier = Modifier.width(5.dp))
             Text(
                 text = grade,
-                modifier = modifier.weight(0.25f),
+                modifier = Modifier.weight(0.25f),
                 style = style
             )
             Spacer(modifier = Modifier.width(5.dp))
