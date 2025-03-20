@@ -184,6 +184,7 @@ fun QcaScreen(
 fun ModuleList(moduleList: List<Module>, modifier: Modifier) {
 
     LazyColumn(modifier = modifier) {
+
     }
 }
 
@@ -204,19 +205,22 @@ fun ModuleCard(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 5.dp , bottom = 5.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+                .padding(5.dp),
+            horizontalArrangement = Arrangement.Center
 
         ) {
             Text(
                 text = code,
-                style = style
+                style = style,
+                modifier = modifier.weight(0.5f)
             )
             Text(
                 text = grade,
+                modifier = modifier.weight(0.25f)
             )
             Text(
                 text = weight,
+                modifier = modifier.weight(0.25f)
             )
         }
 
