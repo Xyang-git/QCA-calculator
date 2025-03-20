@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ED5042_Lab2</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="module_name">Module</string>
+    <string name="module_grade">Grade</string>
+    <string name="module_weight">ECTS</string>
+    <string name="enter_data">Enter modules, grades and the associated weight (in ECTS)\n</string>
+    <string name="qca_calculator">QCA Calculator</string>
+    <string name="your_qca">Your QCA:</string>
+    <string name="add_module">Add Module</string>
+    <string name="module_code">Module Code</string>
+    <string name="add">Add</string>
+    <string name="change_module">Change Module</string>
+    <string name="back_button">Back</string>
+    <string name="code">Code</string>
+    <string name="grade">Grade</string>
+    <string name="ects">ECTS</string>
+    <string name="filter">Filter</string>
+    <string name="reset">Reset</string>
+    <string name="qpv">QPV higher than:</string>
+
+
+</resources>
