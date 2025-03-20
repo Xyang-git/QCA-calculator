@@ -188,8 +188,15 @@ fun ModuleList(moduleList: List<Module>, modifier: Modifier) {
     }
 }
 
+
 fun filter(moduleList: List<Module>, minQPV: Float): List<Module> {
-    return moduleList
+    val filteredList = mutableListOf<Module>()
+    for (module in moduleList) {
+        if (lookupQpv(module.grade) >= minQPV) {
+            filteredList.add(module)
+        }
+    }
+    return filteredList
 }
 
 
@@ -242,9 +249,16 @@ fun calculateQca(
     moduleList: List<Module>
 ): String
 {
-
-   return "0.0"
+    val qpvSum = {
+        moduleList: List<Module> -> moduleList.sumOf { module -> lookupQpv(module.grade)*module.weight}
+    }
+    val weightSum = {
+        moduleList: List<Module> -> moduleList.sumOf { module -> module.weight}
+    }
+    val result = qpvSum(moduleList)/weightSum(moduleList)
+    return String.format("%.2f", result)
 }
+
 
 fun lookupQpv(grade:String): Double {
     val qpv = when (grade) {
