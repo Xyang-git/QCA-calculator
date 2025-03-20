@@ -212,22 +212,26 @@ fun ModuleCard(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(5.dp),
-            horizontalArrangement = Arrangement.Center
+                .padding(top = 5.dp, bottom = 5.dp),
 
+//            horizontalArrangement = Arrangement.Center
         ) {
             Text(
                 text = code,
-                style = style,
-                modifier = modifier.weight(0.5f)
+                modifier = modifier.weight(0.5f),
+                style = style
             )
+            Spacer(modifier = Modifier.width(5.dp))
             Text(
                 text = grade,
-                modifier = modifier.weight(0.25f)
+                modifier = modifier.weight(0.25f),
+                style = style
             )
+            Spacer(modifier = Modifier.width(5.dp))
             Text(
                 text = weight,
-                modifier = modifier.weight(0.25f)
+                modifier = modifier.weight(0.25f),
+                style = style
             )
         }
 
