@@ -186,7 +186,7 @@ fun ModuleList(moduleList: List<Module>, modifier: Modifier) {
 
     LazyColumn(modifier = modifier) {
 
-      items(moduleList)  { module->
+      items(moduleList) { module->
             ModuleCard(
                 code = module.code,
                 grade = module.grade,
@@ -197,7 +197,9 @@ fun ModuleList(moduleList: List<Module>, modifier: Modifier) {
                     .padding(5.dp)
             )
         }
-
+    }
+    moduleList.forEach{
+        module->
     }
 }
 
@@ -263,16 +265,15 @@ fun QcaScreenPreview() {
 
 fun calculateQca(
     moduleList: List<Module>
-): String
-{
-    val qpvSum = {
-        moduleList: List<Module> -> moduleList.sumOf { module -> lookupQpv(module.grade)*module.weight}
+): String {
+    if (moduleList.isEmpty()) {
+        return "0.00"
+    } else {
+        val qpvSum = moduleList.sumOf{lookupQpv(it.grade) * it.weight }
+        val weightSum = moduleList.sumOf { it.weight }
+        val result = qpvSum / weightSum
+        return String.format(Locale.US,"%.2f", result)
     }
-    val weightSum = {
-        moduleList: List<Module> -> moduleList.sumOf { module -> module.weight}
-    }
-    val result = qpvSum(moduleList)/weightSum(moduleList)
-    return String.format("%.2f", result)
 }
 
 
