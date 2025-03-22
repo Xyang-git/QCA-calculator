@@ -35,7 +35,7 @@ import ul.ed5042_lab2.ui.theme.ED5042_Lab2Theme
 
 class MainActivity : ComponentActivity() {
 
-    val DEBUG = true
+    val DEBUG = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,6 +103,7 @@ fun QcaApp(modules: MutableList<Module>,
                     module=null,
                     onActionClicked = {
                         navController.navigate(QcaAppScreen.QcaScreen.name)
+                        moduleList.add(it)
                     },
                     buttonText = stringResource(R.string.add_module),
                     modifier = Modifier

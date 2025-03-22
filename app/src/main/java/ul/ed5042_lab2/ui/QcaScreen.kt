@@ -191,7 +191,7 @@ fun ModuleList(moduleList: List<Module>, modifier: Modifier) {
                 code = module.code,
                 grade = module.grade,
                 weight = module.weight.toString(),
-                style = MaterialTheme.typography.bodyLarge,
+                style = typography.bodyLarge,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(5.dp)
@@ -225,8 +225,8 @@ fun ModuleCard(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(5.dp),
-
-//            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = code,
